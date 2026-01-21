@@ -1,0 +1,92 @@
+import { Button } from "@/components/ui/button";
+import { Home, Search, BookOpen, Menu, X } from "lucide-react";
+import { useState } from "react";
+
+const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", icon: Home, href: "#home" },
+    { name: "Search", icon: Search, href: "#search" },
+    { name: "Learn More", icon: BookOpen, href: "#learn" },
+  ];
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg pulse-glow">
+              <Home className="h-6 w-6 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              EcoSwap
+            </span>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            {navItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <Button
+                  key={item.name}
+                  variant="ghost"
+                  className="text-white hover:bg-white/10 hover:text-white transform hover:scale-105 transition-all duration-600"
+                  onClick={() => {
+                    const element = document.querySelector(item.href);
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  <IconComponent className="h-4 w-4 mr-2" />
+                  {item.name}
+                </Button>
+              );
+            })}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-white hover:bg-white/10"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-white/20 fade-in-up">
+            <div className="flex flex-col space-y-2">
+              {navItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <Button
+                    key={item.name}
+                    variant="ghost"
+                    className="text-white hover:bg-white/10 hover:text-white justify-start transform hover:scale-105 transition-all duration-600"
+                    onClick={() => {
+                      const element = document.querySelector(item.href);
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <IconComponent className="h-4 w-4 mr-2" />
+                    {item.name}
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navigation;
