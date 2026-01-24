@@ -1,16 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Home, Package, User, Shield, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", icon: Home, href: "#home" },
-    { name: "Browse Items", icon: Package, href: "#browse" },
-    { name: "My Account", icon: User, href: "#account" },
-    { name: "Admin Panel", icon: Shield, href: "#admin" },
+    { name: "Home", icon: Home, path: "/" },
+    { name: "Browse Items", icon: Package, path: "/browse" },
+    { name: "My Account", icon: User, path: "/account" },
+    { name: "Admin Panel", icon: Shield, path: "/admin" },
   ];
+
+  const navigateTo = (path: string) => {
+    navigate(path);
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
@@ -35,10 +42,7 @@ const Navigation = () => {
                   key={item.name}
                   variant="ghost"
                   className="text-white hover:bg-white/10 hover:text-white transform hover:scale-105 transition-all duration-600"
-                  onClick={() => {
-                    const element = document.querySelector(item.href);
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                  onClick={() => navigateTo(item.path)}
                 >
                   <IconComponent className="h-4 w-4 mr-2" />
                   {item.name}
@@ -71,11 +75,7 @@ const Navigation = () => {
                     key={item.name}
                     variant="ghost"
                     className="text-white hover:bg-white/10 hover:text-white justify-start transform hover:scale-105 transition-all duration-600"
-                    onClick={() => {
-                      const element = document.querySelector(item.href);
-                      element?.scrollIntoView({ behavior: 'smooth' });
-                      setIsMenuOpen(false);
-                    }}
+                    onClick={() => navigateTo(item.path)}
                   >
                     <IconComponent className="h-4 w-4 mr-2" />
                     {item.name}
