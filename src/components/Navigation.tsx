@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Home, Search, BookOpen, Menu, X } from "lucide-react";
+import { Home, Package, User, Shield, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -7,8 +7,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", icon: Home, href: "#home" },
-    { name: "Search", icon: Search, href: "#search" },
-    { name: "Learn More", icon: BookOpen, href: "#learn" },
+    { name: "Browse Items", icon: Package, href: "#browse" },
+    { name: "My Account", icon: User, href: "#account" },
+    { name: "Admin Panel", icon: Shield, href: "#admin" },
   ];
 
   return (
@@ -17,11 +18,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg pulse-glow">
-              <Home className="h-6 w-6 text-white" />
+            <div className="p-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg pulse-glow">
+              <Package className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              EcoSwap
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+              CampusExchange
             </span>
           </div>
 

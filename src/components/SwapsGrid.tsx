@@ -24,75 +24,111 @@ const SwapsGrid = () => {
   const swapItems: SwapItem[] = [
     {
       id: "1",
-      title: "Vintage Leather Jacket",
-      description: "Beautiful brown leather jacket in excellent condition. Perfect for someone who loves vintage fashion and wants to give this piece a new life.",
-      category: "Fashion",
-      condition: "Excellent",
-      location: "Portland, OR",
-      postedBy: "Sarah M.",
-      postedDate: "2 days ago",
-      image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop",
-      tags: ["Vintage", "Leather", "Outerwear"]
+      title: "Organic Chemistry Textbook",
+      description: "Used Organic Chemistry textbook with all chapters intact. Great for students taking CHEM 2310. Includes solutions manual.",
+      category: "Books",
+      condition: "Good",
+      location: "Science Building, Room 205",
+      postedBy: "Chemistry Student",
+      postedDate: "1 day ago",
+      image: "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=400&h=300&fit=crop",
+      tags: ["Textbook", "Chemistry", "Study Material"]
     },
     {
       id: "2",
-      title: "Kitchen Stand Mixer",
-      description: "Barely used KitchenAid stand mixer. Moving to a smaller place and need to downsize. Comes with all original attachments.",
-      category: "Kitchen",
-      condition: "Like New",
-      location: "Seattle, WA",
-      postedBy: "Mike Chen",
-      postedDate: "1 week ago",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-      tags: ["Kitchen", "Appliance", "Baking"]
+      title: "MacBook Pro 13-inch",
+      description: "Lightly used MacBook Pro suitable for college work. Includes charger and protective case. Perfect for CS students.",
+      category: "Electronics",
+      condition: "Excellent",
+      location: "Computer Science Lab",
+      postedBy: "CS Senior",
+      postedDate: "2 days ago",
+      image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
+      tags: ["Laptop", "Computer", "Programming"]
     },
     {
       id: "3",
-      title: "Yoga Mat & Blocks Set",
-      description: "Complete yoga set including premium mat, blocks, and strap. Great for beginners or anyone wanting to practice at home.",
-      category: "Fitness",
-      condition: "Good",
-      location: "San Francisco, CA",
-      postedBy: "Elena Rodriguez",
+      title: "Dorm Mini Fridge",
+      description: "Compact mini fridge in perfect condition. Ideal for dorm rooms. Energy efficient and quiet operation.",
+      category: "Furniture",
+      condition: "Like New",
+      location: "Dormitory Hall A",
+      postedBy: "Graduating Senior",
       postedDate: "3 days ago",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
-      tags: ["Yoga", "Fitness", "Wellness"]
+      image: "https://images.unsplash.com/photo-1588283235062-63b0c4b3f23f?w=400&h=300&fit=crop",
+      tags: ["Appliance", "Dorm", "Mini-fridge"]
     },
     {
       id: "4",
-      title: "Board Game Collection",
-      description: "Collection of 5 popular board games including Settlers of Catan, Ticket to Ride, and more. All in great condition with all pieces.",
-      category: "Games",
-      condition: "Very Good",
-      location: "Austin, TX",
-      postedBy: "Jordan Kim",
-      postedDate: "5 days ago",
-      image: "https://images.unsplash.com/photo-1561043433-aaf687c4cf04?w=400&h=300&fit=crop",
-      tags: ["Board Games", "Entertainment", "Family"]
+      title: "Calculus Study Guide",
+      description: "Comprehensive study guide with solved examples and practice tests. Previously used by math tutor.",
+      category: "Books",
+      condition: "Good",
+      location: "Math Department Library",
+      postedBy: "Math Tutor",
+      postedDate: "1 week ago",
+      image: "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=400&h=300&fit=crop",
+      tags: ["Study Guide", "Math", "Calculus"]
     },
     {
       id: "5",
-      title: "Acoustic Guitar",
-      description: "Beautiful acoustic guitar perfect for beginners or seasoned players. Comes with a case and extra strings.",
-      category: "Music",
-      condition: "Good",
-      location: "Nashville, TN",
-      postedBy: "Alex Thompson",
-      postedDate: "1 week ago",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
-      tags: ["Music", "Guitar", "Instrument"]
+      title: "Gaming Chair",
+      description: "Comfortable ergonomic gaming chair with lumbar support. Perfect for long study sessions or gaming. Adjustable height.",
+      category: "Furniture",
+      condition: "Very Good",
+      location: "Student Union",
+      postedBy: "Graduating Gamer",
+      postedDate: "4 days ago",
+      image: "https://images.unsplash.com/photo-1596057035607-e3493dd287fb?w=400&h=300&fit=crop",
+      tags: ["Chair", "Ergonomic", "Gaming"]
     },
     {
       id: "6",
-      title: "Indoor Plant Bundle",
-      description: "Collection of 3 healthy houseplants including pothos, snake plant, and peace lily. Perfect for someone starting their plant journey.",
-      category: "Plants",
+      title: "Physics Formula Sheet Collection",
+      description: "Handwritten formula sheets for Physics 1, 2, and Advanced Mechanics. Organized by topic with examples.",
+      category: "Study Materials",
       condition: "Excellent",
-      location: "Denver, CO",
-      postedBy: "Maya Patel",
-      postedDate: "4 days ago",
-      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop",
-      tags: ["Plants", "Indoor", "Gardening"]
+      location: "Physics Study Room",
+      postedBy: "Physics Major",
+      postedDate: "5 days ago",
+      image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop",
+      tags: ["Notes", "Physics", "Study Guide"]
+    },
+    {
+      id: "7",
+      title: "Bicycle",
+      description: "Reliable single-speed bicycle perfect for campus commuting. Recently serviced and in excellent condition.",
+      category: "Transportation",
+      condition: "Excellent",
+      location: "Bike Rack near Library",
+      postedBy: "Environment Conscious Student",
+      postedDate: "1 day ago",
+      image: "https://images.unsplash.com/photo-1532588240847-6fc44d7c5d96?w=400&h=300&fit=crop",
+      tags: ["Bike", "Transportation", "Eco-Friendly"]
+    },
+    {
+      id: "8",
+      title: "Drawing Tablet",
+      description: "Wacom drawing tablet with pen and accessories. Great for art and design students. Like new condition.",
+      category: "Electronics",
+      condition: "Like New",
+      location: "Art Studio",
+      postedBy: "Art Graduate",
+      postedDate: "2 days ago",
+      image: "https://images.unsplash.com/photo-1606220588911-4a525d2b6c40?w=400&h=300&fit=crop",
+      tags: ["Art", "Design", "Tablet"]
+    },
+    {
+      id: "9",
+      title: "Lab Safety Equipment",
+      description: "Complete lab safety kit including goggles, gloves, apron, and safety manual. Essential for chemistry and biology labs.",
+      category: "Safety",
+      condition: "Excellent",
+      location: "Science Building Front Desk",
+      postedBy: "Lab Assistant",
+      postedDate: "3 days ago",
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
+      tags: ["Safety", "Lab", "Equipment"]
     }
   ];
 
@@ -140,7 +176,7 @@ const SwapsGrid = () => {
         
         <div className="flex gap-3 pt-4">
           <Button variant="gradient" className="flex-1">
-            Contact for Swap
+            Request Item
           </Button>
           <Button variant="outline" size="icon" className="border-forest text-forest hover:bg-forest/10 scale-on-hover">
             <Heart size={20} />
@@ -162,10 +198,10 @@ const SwapsGrid = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Available Swaps
+            Campus Resources Available
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover amazing items from your community ready for their next adventure
+            Discover useful items from fellow students and campus community ready for their next owner
           </p>
         </div>
 
@@ -223,7 +259,7 @@ const SwapsGrid = () => {
         
         <div className="text-center mt-12">
           <Button size="lg" variant="gradient" className="transform hover:scale-105 transition-all duration-600">
-            Load More Swaps
+            Load More Resources
           </Button>
         </div>
       </div>
