@@ -10,20 +10,20 @@ const Index = () => {
     <>
       <Navigation />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        <div className="container mx-auto px-4">
-          <div id="home">
+        <div className="w-full">
+          <div id="home" className="w-full">
             <HeroSection />
           </div>
-          <div id="browse">
+          <div id="browse" className="container mx-auto px-4">
             <BrowseItems />
           </div>
-          <div>
+          <div className="container mx-auto px-4">
             <FAQSection />
           </div>
-          <div>
+          <div className="container mx-auto px-4">
             <NewsletterSection />
           </div>
-          <div>
+          <div className="container mx-auto px-4">
             <Footer />
           </div>
         </div>
