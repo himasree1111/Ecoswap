@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Home, Package, User, Shield, Menu, X } from "lucide-react";
+import { Home, Package, User, Shield, Menu, X, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,10 +26,10 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="p-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg pulse-glow">
-              <Package className="h-6 w-6 text-white" />
+              <BookOpen className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-              CampusExchange
+              CampusLoop
             </span>
           </div>
 

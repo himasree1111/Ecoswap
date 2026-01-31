@@ -14,7 +14,7 @@ interface SwapItem {
   location: string;
   postedBy: string;
   postedDate: string;
-  image: string;
+  image?: string;
   tags: string[];
 }
 
@@ -38,7 +38,7 @@ const SwapsGrid = () => {
       id: "2",
       title: "MacBook Pro 13-inch",
       description: "Lightly used MacBook Pro suitable for college work. Includes charger and protective case. Perfect for CS students.",
-      category: "Electronics",
+      category: "Digital Tools",
       condition: "Excellent",
       location: "Computer Science Lab",
       postedBy: "CS Senior",
@@ -48,50 +48,50 @@ const SwapsGrid = () => {
     },
     {
       id: "3",
-      title: "Dorm Mini Fridge",
-      description: "Compact mini fridge in perfect condition. Ideal for dorm rooms. Energy efficient and quiet operation.",
-      category: "Furniture",
+      title: "GATE Preparation Books",
+      description: "Complete set of GATE preparation books for Computer Science. Includes previous year papers and solutions.",
+      category: "Books",
       condition: "Like New",
-      location: "Dormitory Hall A",
-      postedBy: "Graduating Senior",
+      location: "Library Study Room",
+      postedBy: "GATE Aspirant",
       postedDate: "3 days ago",
-      image: "https://images.unsplash.com/photo-1588283235062-63b0c4b3f23f?w=400&h=300&fit=crop",
-      tags: ["Appliance", "Dorm", "Mini-fridge"]
+      image: "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=400&h=300&fit=crop",
+      tags: ["GATE", "Exam Prep", "Engineering"]
     },
     {
       id: "4",
-      title: "Calculus Study Guide",
-      description: "Comprehensive study guide with solved examples and practice tests. Previously used by math tutor.",
+      title: "Data Structures & Algorithms Guide",
+      description: "Comprehensive guide to Data Structures and Algorithms with practical examples. Great for interview prep.",
       category: "Books",
       condition: "Good",
-      location: "Math Department Library",
-      postedBy: "Math Tutor",
+      location: "Computer Science Dept",
+      postedBy: "Senior CS Student",
       postedDate: "1 week ago",
       image: "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=400&h=300&fit=crop",
-      tags: ["Study Guide", "Math", "Calculus"]
+      tags: ["DSA", "Programming", "Computer Science"]
     },
     {
       id: "5",
-      title: "Gaming Chair",
-      description: "Comfortable ergonomic gaming chair with lumbar support. Perfect for long study sessions or gaming. Adjustable height.",
-      category: "Furniture",
+      title: "Lab Safety Apron",
+      description: "Clean, gently used lab safety apron. Essential for chemistry and biology laboratory work.",
+      category: "Lab Equipment",
       condition: "Very Good",
-      location: "Student Union",
-      postedBy: "Graduating Gamer",
+      location: "Science Building Front Desk",
+      postedBy: "Bio Student",
       postedDate: "4 days ago",
-      image: "https://images.unsplash.com/photo-1596057035607-e3493dd287fb?w=400&h=300&fit=crop",
-      tags: ["Chair", "Ergonomic", "Gaming"]
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
+      tags: ["Safety", "Lab", "Apron"]
     },
     {
       id: "6",
       title: "Physics Formula Sheet Collection",
       description: "Handwritten formula sheets for Physics 1, 2, and Advanced Mechanics. Organized by topic with examples.",
-      category: "Study Materials",
+      category: "Books",
       condition: "Excellent",
       location: "Physics Study Room",
       postedBy: "Physics Major",
       postedDate: "5 days ago",
-      image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=400&h=300&fit=crop",
       tags: ["Notes", "Physics", "Study Guide"]
     },
     {
@@ -110,7 +110,7 @@ const SwapsGrid = () => {
       id: "8",
       title: "Drawing Tablet",
       description: "Wacom drawing tablet with pen and accessories. Great for art and design students. Like new condition.",
-      category: "Electronics",
+      category: "Digital Tools",
       condition: "Like New",
       location: "Art Studio",
       postedBy: "Art Graduate",
@@ -122,7 +122,7 @@ const SwapsGrid = () => {
       id: "9",
       title: "Lab Safety Equipment",
       description: "Complete lab safety kit including goggles, gloves, apron, and safety manual. Essential for chemistry and biology labs.",
-      category: "Safety",
+      category: "Lab Equipment",
       condition: "Excellent",
       location: "Science Building Front Desk",
       postedBy: "Lab Assistant",
@@ -139,11 +139,17 @@ const SwapsGrid = () => {
       </DialogHeader>
       
       <div className="space-y-6">
-        <img 
-          src={item.image} 
-          alt={item.title}
-          className="w-full h-64 object-cover rounded-lg"
-        />
+        {item.image ? (
+          <img 
+            src={item.image} 
+            alt={item.title}
+            className="w-full h-64 object-cover rounded-lg"
+          />
+        ) : (
+          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
+            <span className="text-4xl font-bold text-gray-400">{item.category.charAt(0)}</span>
+          </div>
+        )}
         
         <div className="flex flex-wrap gap-2">
           {item.tags.map((tag) => (
@@ -211,11 +217,17 @@ const SwapsGrid = () => {
               <DialogTrigger asChild>
                 <Card className="cursor-pointer shadow-card hover:shadow-hover hover:scale-105 transition-all duration-500 border-mint/20 group bg-white/90 backdrop-blur-sm scale-on-hover">
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-600"
-                    />
+                    {item.image ? (
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-600"
+                      />
+                    ) : (
+                      <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-600">
+                        <span className="text-5xl font-bold text-gray-400">{item.category.charAt(0)}</span>
+                      </div>
+                    )}
                     <Badge className="absolute top-2 right-2 bg-forest text-white">
                       {item.category}
                     </Badge>

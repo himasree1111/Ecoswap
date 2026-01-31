@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Recycle } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -17,13 +17,13 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto text-center text-white px-4">
           <div className="flex justify-center mb-6">
             <div className="p-4 bg-white/15 rounded-full backdrop-blur-md pulse-glow scale-on-hover border border-white/20">
-              <Recycle size={48} className="bounce-animation" />
+              <BookOpen size={48} className="bounce-animation" />
             </div>
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight fade-in-up">
             Welcome to{" "}
-            <span className="text-yellow-300 drop-shadow-lg wave-animation bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">CampusExchange</span>
+            <span className="text-yellow-300 drop-shadow-lg wave-animation bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">CampusLoop</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-2xl mx-auto leading-relaxed fade-in-up" style={{ animationDelay: '0.2s' }}>
