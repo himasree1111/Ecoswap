@@ -10,6 +10,7 @@ import MyAccountPage from "./pages/MyAccountPage";
 import AdminPage from "./pages/AdminPage";
 import DashboardLayout from "./components/DashboardLayout";
 import HeroSection from "./components/HeroSection";
+import LoginPage from "./pages/LoginPage";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/browse" element={
             <DashboardLayout>
               <BrowsePage />

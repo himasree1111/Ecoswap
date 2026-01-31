@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Home, Package, User, Shield, Menu, X, BookOpen } from "lucide-react";
+import { Home, Package, User, Shield, Menu, X, BookOpen, LogIn } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -49,6 +49,14 @@ const Navigation = () => {
                 </Button>
               );
             })}
+            <Button
+              variant="ghost"
+              className="text-white hover:bg-white/10 hover:text-white transform hover:scale-105 transition-all duration-600 ml-2"
+              onClick={() => navigateTo("/login")}
+            >
+              <LogIn className="h-4 w-4 mr-2" />
+              Login
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -82,6 +90,14 @@ const Navigation = () => {
                   </Button>
                 );
               })}
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-white/10 hover:text-white justify-start transform hover:scale-105 transition-all duration-600"
+                onClick={() => navigateTo("/login")}
+              >
+                <LogIn className="h-4 w-4 mr-2" />
+                Login
+              </Button>
             </div>
           </div>
         )}
