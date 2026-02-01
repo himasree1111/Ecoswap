@@ -2,8 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Heart, MapPin, Clock, User } from "lucide-react";
+import { Heart, MapPin, Clock, User, X } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface SwapItem {
   id: string;
@@ -20,6 +21,15 @@ interface SwapItem {
 
 const SwapsGrid = () => {
   const [selectedItem, setSelectedItem] = useState<SwapItem | null>(null);
+  const [wishlistItems, setWishlistItems] = useState<string[]>([]);
+
+  const toggleWishlist = (itemId: string) => {
+    setWishlistItems(prev => 
+      prev.includes(itemId) 
+        ? prev.filter(id => id !== itemId) 
+        : [...prev, itemId]
+    );
+  };
 
   const swapItems: SwapItem[] = [
     {
@@ -132,65 +142,80 @@ const SwapsGrid = () => {
     }
   ];
 
-  const SwapDetailModal = ({ item }: { item: SwapItem }) => (
-    <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-      <DialogHeader>
-        <DialogTitle className="text-2xl text-forest">{item.title}</DialogTitle>
-      </DialogHeader>
-      
-      <div className="space-y-6">
-        {item.image ? (
-          <img 
-            src={item.image} 
-            alt={item.title}
-            className="w-full h-64 object-cover rounded-lg"
-          />
-        ) : (
-          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
-            <span className="text-4xl font-bold text-gray-400">{item.category.charAt(0)}</span>
-          </div>
-        )}
+  const SwapDetailModal = ({ item }: { item: SwapItem }) => {
+    const isWishlisted = wishlistItems.includes(item.id);
+    
+    const handleRequestItem = () => {
+      toast.success("Request submitted successfully!", {
+        description: `Your request for "${item.title}" has been sent to the owner.`,
+      });
+    };
+
+    return (
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-2xl text-forest">{item.title}</DialogTitle>
+        </DialogHeader>
         
-        <div className="flex flex-wrap gap-2">
-          {item.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="bg-mint text-forest">
-              {tag}
-            </Badge>
-          ))}
+        <div className="space-y-6">
+          {item.image ? (
+            <img 
+              src={item.image} 
+              alt={item.title}
+              className="w-full h-64 object-cover rounded-lg"
+            />
+          ) : (
+            <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
+              <span className="text-4xl font-bold text-gray-400">{item.category.charAt(0)}</span>
+            </div>
+          )}
+          
+          <div className="flex flex-wrap gap-2">
+            {item.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="bg-mint text-forest">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          
+          <p className="text-foreground/80 leading-relaxed">{item.description}</p>
+          
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <User size={16} className="text-nature" />
+              <span>Posted by {item.postedBy}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock size={16} className="text-nature" />
+              <span>{item.postedDate}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin size={16} className="text-nature" />
+              <span>{item.location}</span>
+            </div>
+            <div>
+              <span className="font-medium">Condition: </span>
+              <span className="text-forest">{item.condition}</span>
+            </div>
+          </div>
+          
+          <div className="flex gap-3 pt-4">
+            <Button variant="gradient" className="flex-1" onClick={handleRequestItem}>
+              Request Item
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className={`border-forest text-forest hover:bg-forest/10 scale-on-hover ${isWishlisted ? 'text-red-500' : ''}`}
+              onClick={() => toggleWishlist(item.id)}
+            >
+              {isWishlisted ? <X size={20} /> : <Heart size={20} />}
+            </Button>
+          </div>
         </div>
-        
-        <p className="text-foreground/80 leading-relaxed">{item.description}</p>
-        
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div className="flex items-center gap-2">
-            <User size={16} className="text-nature" />
-            <span>Posted by {item.postedBy}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock size={16} className="text-nature" />
-            <span>{item.postedDate}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin size={16} className="text-nature" />
-            <span>{item.location}</span>
-          </div>
-          <div>
-            <span className="font-medium">Condition: </span>
-            <span className="text-forest">{item.condition}</span>
-          </div>
-        </div>
-        
-        <div className="flex gap-3 pt-4">
-          <Button variant="gradient" className="flex-1">
-            Request Item
-          </Button>
-          <Button variant="outline" size="icon" className="border-forest text-forest hover:bg-forest/10 scale-on-hover">
-            <Heart size={20} />
-          </Button>
-        </div>
-      </div>
-    </DialogContent>
-  );
+      </DialogContent>
+    );
+  };
 
   return (
     <section className="py-16 lg:py-24 dynamic-bg relative overflow-hidden">
@@ -212,61 +237,78 @@ const SwapsGrid = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {swapItems.map((item) => (
-            <Dialog key={item.id}>
-              <DialogTrigger asChild>
-                <Card className="cursor-pointer shadow-card hover:shadow-hover hover:scale-105 transition-all duration-500 border-mint/20 group bg-white/90 backdrop-blur-sm scale-on-hover">
-                  <div className="relative overflow-hidden rounded-t-lg">
-                    {item.image ? (
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-600"
-                      />
-                    ) : (
-                      <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-600">
-                        <span className="text-5xl font-bold text-gray-400">{item.category.charAt(0)}</span>
-                      </div>
-                    )}
-                    <Badge className="absolute top-2 right-2 bg-forest text-white">
-                      {item.category}
-                    </Badge>
-                  </div>
-                  
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-forest group-hover:text-sage transition-eco">
-                      {item.title}
-                    </CardTitle>
-                  </CardHeader>
-                  
-                  <CardContent>
-                    <p className="text-foreground/70 text-sm mb-3 line-clamp-2">
-                      {item.description}
-                    </p>
-                    
-                    <div className="flex items-center justify-between text-xs text-nature">
-                      <div className="flex items-center gap-1">
-                        <MapPin size={12} />
-                        <span>{item.location}</span>
-                      </div>
-                      <span>{item.postedDate}</span>
-                    </div>
-                    
-                    <div className="flex justify-between items-center mt-3">
-                      <Badge variant="outline" className="text-xs border-sage text-sage">
-                        {item.condition}
+          {swapItems.map((item) => {
+            const isWishlisted = wishlistItems.includes(item.id);
+            
+            return (
+              <Dialog key={item.id}>
+                <DialogTrigger asChild>
+                  <Card className="cursor-pointer shadow-card hover:shadow-hover hover:scale-105 transition-all duration-500 border-mint/20 group bg-white/90 backdrop-blur-sm scale-on-hover">
+                    <div className="relative overflow-hidden rounded-t-lg">
+                      {item.image ? (
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-600"
+                        />
+                      ) : (
+                        <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-600">
+                          <span className="text-5xl font-bold text-gray-400">{item.category.charAt(0)}</span>
+                        </div>
+                      )}
+                      <Badge className="absolute top-2 right-2 bg-forest text-white">
+                        {item.category}
                       </Badge>
-                      <Button size="sm" variant="eco" className="text-xs transform hover:scale-110 transition-all duration-600">
-                        View Details
+                      
+                      {/* Wishlist button */}
+                      <Button 
+                        size="icon"
+                        variant="outline"
+                        className="absolute top-2 left-2 border-forest text-forest hover:bg-forest/10 scale-on-hover"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleWishlist(item.id);
+                        }}
+                      >
+                        {isWishlisted ? <X size={16} /> : <Heart size={16} />}
                       </Button>
                     </div>
-                  </CardContent>
-                </Card>
-              </DialogTrigger>
-              
-              <SwapDetailModal item={item} />
-            </Dialog>
-          ))}
+                    
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg text-forest group-hover:text-sage transition-eco">
+                        {item.title}
+                      </CardTitle>
+                    </CardHeader>
+                    
+                    <CardContent>
+                      <p className="text-foreground/70 text-sm mb-3 line-clamp-2">
+                        {item.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between text-xs text-nature">
+                        <div className="flex items-center gap-1">
+                          <MapPin size={12} />
+                          <span>{item.location}</span>
+                        </div>
+                        <span>{item.postedDate}</span>
+                      </div>
+                      
+                      <div className="flex justify-between items-center mt-3">
+                        <Badge variant="outline" className="text-xs border-sage text-sage">
+                          {item.condition}
+                        </Badge>
+                        <Button size="sm" variant="eco" className="text-xs transform hover:scale-110 transition-all duration-600">
+                          View Details
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
+                
+                <SwapDetailModal item={item} />
+              </Dialog>
+            );
+          })}
         </div>
         
         <div className="text-center mt-12">
