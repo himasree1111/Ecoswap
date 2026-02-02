@@ -4,28 +4,28 @@ import { HelpCircle } from "lucide-react";
 const FAQSection = () => {
   const faqs = [
     {
-      question: "How does EcoSwap work?",
-      answer: "EcoSwap connects people who want to exchange items they no longer need. Simply browse available items, contact the owner, and arrange a swap that works for both parties. It's a sustainable way to give items a second life while finding something new for yourself."
+      question: "How does CampusLoop work?",
+      answer: "CampusLoop connects students who want to share or exchange resources they no longer need. Simply browse available items, request what you need, and coordinate pickup with the owner. It's a sustainable way to give items a second life while finding something useful for your campus life."
     },
     {
-      question: "Is EcoSwap free to use?",
-      answer: "Yes! EcoSwap is completely free to use. We believe in making sustainable living accessible to everyone. There are no listing fees, transaction fees, or membership costs."
+      question: "Is CampusLoop free to use?",
+      answer: "Yes! CampusLoop is completely free to use for students. We believe in making resource sharing accessible to everyone. There are no listing fees, transaction fees, or membership costs."
     },
     {
-      question: "What items can I swap?",
-      answer: "You can swap almost anything! Popular categories include clothing, books, electronics, home decor, kitchen items, sports equipment, and more. We only ask that items are in good condition and safe to use."
+      question: "What items can I find on CampusLoop?",
+      answer: "You can find many useful campus items! Popular categories include textbooks, digital tools, lab equipment, furniture, transportation, study guides, and more. All items are specifically curated for student needs."
     },
     {
-      question: "How do I ensure a safe swap?",
-      answer: "We recommend meeting in public places during daylight hours. Many communities have designated swap spots at libraries or community centers. Always trust your instincts, and consider bringing a friend if you're unsure."
+      question: "How do I ensure a safe exchange?",
+      answer: "We recommend meeting in public places on campus during daylight hours. Many departments have designated exchange spots. Always trust your instincts, and consider bringing a friend if you're unsure. Check the item condition before finalizing the exchange."
     },
     {
-      question: "What if I don't have anything to swap?",
-      answer: "While swapping is our primary focus, some community members are happy to give away items for free, especially if you're just starting your sustainable living journey. You can also offer services, skills, or help in exchange for items."
+      question: "What if I don't have anything to share?",
+      answer: "While sharing is our primary focus, many community members are happy to give away items for free, especially to fellow students. You can also offer services like tutoring, help with projects, or assistance in exchange for items."
     },
     {
-      question: "How do I post an item for swap?",
-      answer: "Create a free account, click 'Post Item', add photos and a description, select your preferred swap preferences, and publish your listing. Your item will be visible to the community immediately."
+      question: "How do I post an item to share?",
+      answer: "Create a free account, click 'Post Item', add photos and a description, select your preferred category and condition, and publish your listing. Your item will be visible to the campus community immediately."
     }
   ];
 
@@ -42,7 +42,7 @@ const FAQSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-nature max-w-2xl mx-auto">
-            Everything you need to know about sustainable swapping
+            Everything you need to know about campus resource sharing
           </p>
         </div>
 
